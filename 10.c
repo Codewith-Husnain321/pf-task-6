@@ -1,37 +1,38 @@
 #include <stdio.h>
-#include <ctype.h>
 
 int main() {
-
     char username[21];
-    int vowels = 0, consonants = 0;
+    int vowelCount = 0, constCount = 0;
 
     printf("Enter username: ");
     scanf("%20s", username);
 
-    for (int i = 0; username[i] != '\0'; i++)
-    {
-        char ch = username[i];
+    for (int i = 0; username[i] != '\0'; i++) {
 
-        if (ch == 'a' || ch == 'e' || ch == 'i' ||
-            ch == 'o' || ch == 'u' ||
-            ch == 'A' || ch == 'E' || ch == 'I' ||
-            ch == 'O' || ch == 'U')
-        {
-            vowels++;
-        }
-        else if ((ch >= 'a' && ch <= 'z') ||
-                 (ch >= 'A' && ch <= 'Z'))
-        {
-            consonants++;
+        if (username[i] == 'a' || username[i] == 'e' ||
+            username[i] == 'i' || username[i] == 'o' ||
+            username[i] == 'u' ||
+            username[i] == 'A' || username[i] == 'E' ||
+            username[i] == 'I' || username[i] == 'O' ||
+            username[i] == 'U') {
+
+            vowelCount++;
         }
 
-        username[i] = toupper(username[i]);
+        else if ((username[i] >= 'a' && username[i] <= 'z') ||
+                 (username[i] >= 'A' && username[i] <= 'Z')) {
+
+            constCount++;
+        }
+
+        if (username[i] >= 'a' && username[i] <= 'z') {
+            username[i] = username[i] - 32;
+        }
     }
 
-    printf("Vowels = %d\n", vowels);
-    printf("Consonants = %d\n", consonants);
-    printf("Uppercase username = %s\n", username);
+    printf("Vowels: %d\n", vowelCount);
+    printf("Consonants: %d\n", constCount);
+    printf("Uppercase username: %s\n", username);
 
     return 0;
 }
